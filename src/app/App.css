@@ -1,0 +1,18 @@
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.sign-data {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px;
+  width: 300px;
+}
+
+.sign-data a {
+  display: flex;
+  justify-content: center;
+}
+
