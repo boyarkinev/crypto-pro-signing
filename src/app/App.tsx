@@ -22,7 +22,7 @@ export const App = () => {
 	useEffect(() => {
 		// Получает сертификаты пользователя
 		getUserCertificates().then(certs => {
-			// Записывает данные сертификатов для отображения
+			// Сохраняет имя и отпечаток сертификатов в списке
 			const options = certs.map(cert => {
 				return {
 					label: cert.name.replace(/^"|"$/g, '').replace(/""/g, '"'),
@@ -33,10 +33,6 @@ export const App = () => {
 			setCertsOptions(options);
 		});
 	}, []);
-
-	const handleChangeMessage = (e: ChangeEvent<HTMLTextAreaElement>) => {
-		setMessage(e.target.value);
-	};
 
 	// Обработчик выбора сертификата
 	const handleCertChange = async (e: ChangeEvent<HTMLSelectElement>) => {
@@ -52,9 +48,14 @@ export const App = () => {
 		setThumbprint(thumbprint);
 	};
 
+	// Обработчик текстового поля
+	const handleChangeMessage = (e: ChangeEvent<HTMLTextAreaElement>) => {
+		setMessage(e.target.value);
+	};
+
 	// Обработчик кнопки генерации подписи
 	const handleGenerateSignature = async () => {
-		const blob = await create(thumbprint, 'Hello World');
+		const blob = await create(thumbprint, message);
 		// Создает ссылку для скачивания
 		const url = URL.createObjectURL(blob);
 		// Записывает ссылку в хранилище компонента
