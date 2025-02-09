@@ -1,29 +1,25 @@
-import { ChangeEvent, FC } from 'react';
+import { FC } from 'react';
 
-type MessageProps = {
-	message: string;
-	handler: (e: ChangeEvent<HTMLTextAreaElement>) => void;
-};
+import { MessageProps } from '@/shared/types';
 
 /**
  * Поле для ввода сообщения
+ *
  * @prop {message} - сообщение
  * @prop {handler} - обработчик ввода
  * @returns JSX
  */
 export const Message: FC<MessageProps> = props => {
-	const { message, handler } = props;
+	const { disabled, message, handler } = props;
 
 	return (
 		<div className='mb-3'>
-			<label
-				className='form-label'
-				htmlFor='sign-message'
-				style={{ marginLeft: 10 }}>
+			<label className='form-label el-label' htmlFor='sign-message'>
 				Сообщение на подпись
 			</label>
 			<textarea
 				className='form-control'
+				disabled={disabled}
 				id='sign-message'
 				onChange={handler}
 				placeholder='Введите текст'

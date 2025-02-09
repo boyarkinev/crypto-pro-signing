@@ -8,11 +8,14 @@ import { SignDownLoadButtonProps } from '@/shared/types';
  * @prop {url} - ссылка на файл
  * @returns JSX
  */
-export const SignDownLoadButton: FC<SignDownLoadButtonProps> = ({ url }) => {
+export const SignDownLoadButton: FC<SignDownLoadButtonProps> = ({
+	name,
+	url,
+}) => {
 	return (
 		<a
 			className={`btn btn-success ${!url ? 'disabled' : undefined}`}
-			download='signature'
+			download={`${name}.p7s`}
 			href={url}
 			role='button'>
 			Скачать подпись

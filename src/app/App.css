@@ -8,11 +8,15 @@
   flex-direction: column;
   gap: 10px;
   margin: 10px;
-  width: 300px;
+  width: 400px;
 }
 
 .sign-data a {
   display: flex;
   justify-content: center;
+}
+
+.el-label {
+  margin-left: 10px;
 }
 
