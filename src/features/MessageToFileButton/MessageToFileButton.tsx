@@ -18,8 +18,10 @@ export const MessageToFileButton: FC<MessageToFileButtonProps> = ({
 
 	useEffect(() => {
 		if (message) {
+			// Получает локальную ссылку для скачивания файла с текстом
+			const url = getUrlFromBlob(message)
 			// Записывает ссылку в хранилище компонента
-			setMessageUrl(getUrlFromBlob(message));
+			setMessageUrl(url);
 		}
 	}, [message]);
 

@@ -87,10 +87,13 @@ export const App = () => {
 
 	// Обработчик кнопки генерации подписи
 	const handleGenerateSignature = async () => {
+		// Получает подпись в бинарном виде
 		const byteArray = await createSignature(thumbprint, file ?? message);
 		if (byteArray) {
+			// Получает локальную ссылку для скачивания подписи
+			const url = getUrlFromBlob(byteArray)
 			// Записывает ссылку в хранилище компонента
-			setUrl(getUrlFromBlob(byteArray));
+			setUrl(url);
 		}
 	};
 
